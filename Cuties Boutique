@@ -1,0 +1,53 @@
+--Create a boutique database
+
+/**Cuties
+Crop top
+Flare pants
+Maxi dress
+Turtle neck
+Cardigen
+Sweater 
+Skinny jeans
+Crew neck
+Booties
+Belt
+Athletic shorts
+Performance polos
+Jacket
+Blazer
+Mom jeans
+**/
+
+CREATE TABLE Cuties (
+id INTEGER PRIMARY KEY,Name TEXT, Sizes TEXT, Cost NUMERIC,         Sold NUMERIC, Style TEXT, Color INTEGER);
+
+INSERT INTO Cuties VALUES (1, "Crop top", "SML", "$20", 3, "Chic",
+"HunterGreen");
+INSERT INTO Cuties VALUES (2, "Flare Pants", "ML", "$45", 4, "BoHo", "Carmel");
+INSERT INTO Cuties VALUES (3, "Maxi dress", "SMLXL", "$50", 6, "BoHo", "Colorful floral");
+INSERT INTO Cuties values (4, "Turtle neck", "M", "$30", 2, "Black", "Chic");
+INSERT INTO CUTIES VALUES (5, "Cardigen", "SL", "$20", 1, "BoHo", "White");
+INSERT INTO CUTIES VALUES (6, "SWEATER", "LXL", "$55", 3, "Chic", "BURNT ORANGE");
+INSERT INTO CUTIES VALUES (7, "SKINNY JEANS","SMLXL", "$45", 7, "milennial", "blue");
+INSERT INTO CUTIES VALUES (8, "Crew neck", "ML", "$38", 4, "Lounge", "gray");
+INSERT INTO CUTIES VALUES (9, "BOOTIES", "SML", "$52", 2, "Chunky", "Black");
+INSERT INTO CUTIES VALUES (10, "BELT", "SML", "$27", 4, "Boho", "Brown");
+INSERT INTO CUTIES VALUES (11, "ATHLETIC SHORTS", "M", "$32" ,9, "ATHLETIC", "PINK");
+INSERT INTO CUTIES VALUES (12, "PERFORMANCE POLOS", "S", "$42", 2, "ATHLETIC", "BLUE");
+INSERT INTO CUTIES VALUES (13, "JACKET", "XL", "$72" , 3, "CHIC", "BLACK");
+INSERT INTO CUTIES VALUES (14, "BLAZER", "SL", "$56", 4 , "SOPHISTICATED", "YELLOW");
+INSERT INTO CUTIES VALUES (15, "MOM JEANS", "MXL", "$55", 14 , "RELAXED", "BLUE JEAN");
+
+--selecting all data from Cuties 
+SELECT * FROM CUTIES;
+
+--displaying items by cost-least to greatest
+SELECT * FROM CUTIES GROUP BY COST;
+
+--displaying number of items sold with name of item-least to greatest 
+SELECT SOLD FROM CUTIES GROUP BY SOLD;
+
+
+
+
+
