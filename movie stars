@@ -1,0 +1,16 @@
+CREATE TABLE moviestars
+(id INTEGER PRIMARY KEY, Movie TEXT, Actors TEXT, Married TEXT, Genre TEXT, year_released INTEGER);
+
+
+INSERT INTO moviestars VALUES (1, "Mr and Mrs Smtih", "Brad Pitt and Angelina Jolie", "Yes", "action", 2005);
+
+INSERT INTO moviestars VALUES (2, "The Notebook", "Rachel Mcadams and Ryan Gosling", "No", "Love", 2004);
+
+INSERT INTO moviestars VALUES (3, "Casino", "Robert DeNiro and Sharon Stone", "No", "Drama", 1995);
+
+INSERT INTO moviestars VALUES (4, "Eyes Wide Shut","Tom Cruise and Nicole Kidman", "Yes", "Romance", 1999);
+
+
+SELECT * FROM moviestars;
+
+SELECT movie, year_released FROM moviestars
