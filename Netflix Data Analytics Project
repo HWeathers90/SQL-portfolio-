@@ -55,3 +55,44 @@ VALUES
     ('s19', 'Adam Salky', 'Freida Pinto| Logan Marshall-Green| Robert John Burke| Megan Elisabeth Kelly| Sarah Minnich| Hayes Hargrove| Mark Sivertsen| Brandon Fierro| Antonio Valles| Clint Obenchain'),
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
+
+#ANALYSIS
+
+Join to select a few columns from both tables at the same time
+SELECT people.show_id
+,people.director
+,titles.type
+,titles.title
+FROM "netflix_people" people
+LEFT JOIN "netflix_titles_info" titles
+ON people.show_id = titles.show_id;
+
+When was the most recent batch of tv shows and/or movies added to the database?
+Select max(date(date_added))
+FROM "netflix_titles_info";
+
+
+How many movie titles are there in the database? (movies only, not tv shows)
+SELECT count(*)
+FROM "netflix_titles_info"
+WHERE type='Movie';
+
+List all the movies and tv shows in alphabetical order.
+SELECT title 
+FROM netflix_titles_info
+ORDER by title asc;
+
+Who was the Director the for move The Starling?
+SELECT 
+director
+FROM "netflix_titles_info" titles
+LEFT JOIN "netflix_people" people
+ON titles.show_id=people.show_id
+WHERE titles.title='The Starling'
+
+What is the oldest movie in the database and what year was it made?
+SELECT title, release_year
+FROM "netflix_titles_info"
+WHERE type='Movie'
+ORDER by release_year asc
+LIMIT 1;
