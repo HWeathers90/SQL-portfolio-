@@ -59,3 +59,55 @@ SELECT Product, SUM(quantity)
 FROM BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product
+
+
+SELECT location, count(orderId)
+FROM BIT_DB.JanSales
+WHERE location like '%ny%'
+
+GROUP BY location
+HAVING count(orderID)>2
+
+SELECT SUM(quantity),
+product
+FROM BIT_DB.febsales
+WHERE product like '%headphones%'
+GROUP BY product
+
+SELECT AVG(quantity*price)
+FROM BIT_DB.Febsales feb
+LEFT JOIN customers cust
+ON feb.orderid=cust.order_id
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+SELECT sum(quantity)/count(cust.acctnum)
+FROM BIT_DB.FebSales feb
+LEFT JOIN BIT_DB.customers cust
+ON feb.orderid=cust.order_id
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID';
+
+SELECT product,
+SUM (quantity*price)
+FROM BIT_DB.JanSales
+GROUP BY product
+ORDER BY sum(quantity*price) desc
+LIMIT 1;
+
+Who are the top 10 artist based on popularity?
+SELECT popularity, artist_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY popularity LIMIT 10;
+
+SELECT MAX(tempo), artist_name
+FROM BIT_DB.Spotifydata;
+
+SELECT MAX(duration_ms), artist_name
+FROM BIT_DB.Spotifydata;
+
+SELECT AVG(danceability),artist_name, popularity
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(danceability) desc LIMIT 10;
