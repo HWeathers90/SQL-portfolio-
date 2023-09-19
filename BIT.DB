@@ -27,7 +27,6 @@ SELECT product, price
 FROM BIT_DB.JanSales
 Order by price asc LIMIT 1;
 
-
 SELECT SUM(Quantity)*price as revenue
 ,product
 FROM BIT_DB.JanSales
@@ -60,20 +59,21 @@ FROM BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product
 
-
+ Q: Which locations in New York received at least 3 orders in January, and how many orders did they each receive?
 SELECT location, count(orderId)
 FROM BIT_DB.JanSales
 WHERE location like '%ny%'
-
 GROUP BY location
 HAVING count(orderID)>2
 
+Q: How many of each type of headphone was sold in February?
 SELECT SUM(quantity),
 product
 FROM BIT_DB.febsales
 WHERE product like '%headphones%'
 GROUP BY product
 
+Q: What was the average amount spent per account in February?
 SELECT AVG(quantity*price)
 FROM BIT_DB.Febsales feb
 LEFT JOIN customers cust
@@ -81,6 +81,7 @@ ON feb.orderid=cust.order_id
 WHERE length(orderid) = 6 
 AND orderid <> 'Order ID';
 
+Q; What was the average quantity of products purchased per account in February?
 SELECT sum(quantity)/count(cust.acctnum)
 FROM BIT_DB.FebSales feb
 LEFT JOIN BIT_DB.customers cust
@@ -88,6 +89,7 @@ ON feb.orderid=cust.order_id
 WHERE length(orderid) = 6 
 AND orderid <> 'Order ID';
 
+Q: Which product brought in the most revenue in January and how much revenue did it bring in total? 
 SELECT product,
 SUM (quantity*price)
 FROM BIT_DB.JanSales
@@ -95,18 +97,23 @@ GROUP BY product
 ORDER BY sum(quantity*price) desc
 LIMIT 1;
 
-Who are the top 10 artist based on popularity?
+###SPOTIFY DATA
+
+Q: Who are the top 10 artist based on popularity?
 SELECT popularity, artist_name
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 ORDER BY popularity LIMIT 10;
 
+Q: What artist has the max tempo?
 SELECT MAX(tempo), artist_name
 FROM BIT_DB.Spotifydata;
 
+Q: What artist has the max duration?
 SELECT MAX(duration_ms), artist_name
 FROM BIT_DB.Spotifydata;
 
+Q:What's the average danceability for the 10 most popular songs?
 SELECT AVG(danceability),artist_name, track_name, MAX(popularity)
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
