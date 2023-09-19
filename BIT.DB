@@ -107,7 +107,7 @@ FROM BIT_DB.Spotifydata;
 SELECT MAX(duration_ms), artist_name
 FROM BIT_DB.Spotifydata;
 
-SELECT AVG(danceability),artist_name, popularity
+SELECT AVG(danceability),artist_name, track_name, MAX(popularity)
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
-ORDER BY AVG(danceability) desc LIMIT 10;
+ORDER BY MAX(popularity) desc LIMIT 10;
